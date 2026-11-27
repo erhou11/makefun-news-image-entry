@@ -11,10 +11,21 @@ import os
 import shutil
 import sys
 
+PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
+
+
+def is_png(path: str) -> bool:
+    """Return True when the file starts with the PNG signature."""
+    with open(path, "rb") as fh:
+        return fh.read(len(PNG_MAGIC)) == PNG_MAGIC
+
 
 def main() -> int:
     here = os.path.dirname(os.path.abspath(__file__))
     src = os.path.join(here, "entry.png")
+    if not is_png(src):
+        print(f"error: {src} is not a valid PNG file", file=sys.stderr)
+        return 1
     out_dir = os.environ.get("OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     dst = os.path.join(out_dir, "entry.png")

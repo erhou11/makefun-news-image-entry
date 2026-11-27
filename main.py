@@ -2,9 +2,12 @@
 """Write the bundled news-summary image to /output/entry.png.
 
 The entry image (entry.png, shipped next to this file) sums up the world
-news of 26 November 2026 in one graphic. This program copies it to the
-output location the grader reads. Set OUTPUT_DIR to override the output
-directory (used only for local testing).
+news of Thursday, 26 November 2026 in one graphic: 36 numbered items with
+a source and a CONFIRMED/CLAIM credibility tag each, a world map whose
+pins match the item numbers, a markets strip, and a timeline of the day.
+Only items published on 26 November 2026 are counted. This program copies
+the image to the output location the grader reads. Set OUTPUT_DIR to
+override the output directory (used only for local testing).
 """
 
 import os
